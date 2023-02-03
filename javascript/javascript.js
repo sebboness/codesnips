@@ -21,6 +21,7 @@ const arr1 = [
 ]
 
 // array loop
+console.log("\narray loop 1");
 let idx = 0;
 for (const x of arr1) {
     console.log(`[${idx}] = ${JSON.stringify(x)}`);
@@ -28,8 +29,15 @@ for (const x of arr1) {
 }
 
 // array loop (2)
+console.log("\narray loop 2");
 for (let i = 0; i < arr1.length; i++)
     console.log(`[${i}] = ${JSON.stringify(arr1[i])}`);
+
+// array loop (3)
+console.log("\narray loop 3");
+arr1.forEach((x, i) => {
+    console.log(`[${i}] = ${JSON.stringify(arr1[i])}`);
+});
 
 // array.map
 const arr1Map = arr1.map((x) => x.f1);
@@ -38,6 +46,10 @@ console.log(arr1Map);
 // array.filter
 const arr1Filter = arr1.filter((x) => x.f2 == "B");
 console.log(arr1Filter);
+
+// array.find
+const arr1Find = arr1.find((x) => x.f4 === false);
+console.log(arr1Find);
 
 // array.reduce
 const arr1Reduce = arr1.reduce((sum, x) => sum += x.f3, 0);
@@ -48,3 +60,17 @@ const arr1FilterReduce = arr1
     .filter((x) => x.f2 == "B")
     .reduce((sum, x) => sum += x.f3, 0);
 console.log(arr1FilterReduce);
+
+// array.some (returns true if condition applies to at least one item)
+console.log("\nsome (1): ", arr1.some((x) => x.f2 == "B"));
+console.log("\nsome (2): ", arr1.some((x) => x.f2 == "D"));
+
+// array.every (returns true if condition applies to all items)
+console.log("\nevery (1): ", arr1.every((x) => x.f3 < 500));
+console.log("\nevery (2): ", arr1.every((x) => x.f3 > 500));
+
+// array.includes (returns true if condition applies to all items)
+const arr2 = [3, 4, 5, 3, 4, 7];
+console.log("\narr2:", arr2);
+console.log("includes 4? (should be true): ", arr2.includes(4));
+console.log("includes 8? (should be false): ", arr2.includes(8));
